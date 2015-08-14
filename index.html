@@ -31,27 +31,37 @@
         <h3>
 <a id="why-i-created-this-example" class="anchor" href="#why-i-created-this-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why I created this example</h3>
 
-<p>I recently had to build a WatchKit app that connected to the parent app to retrieve data.  What made this a bit tricky, is that the parent app would need to call a remote http api to obtain the necessary data.  </p>
+<p>I recently had to build a WatchKit app that connected to the parent app to retrieve data.  This should be a very simple and well documented scenario via Apple given that almost 100% of WatchKit apps will do this.  Unfortunately, what I found out, is that is indeed not the case.  </p>
 
-<p>Oddly enough, the necessary steps are not well documented and a lot of the information I found online was incomplete.</p>
+<p>Now having built a <em>few</em> apps that do this, I felt it would be nice to document a working solution (Xcode 6.4 &amp; iOS 8.4) that shows how to </p>
+
+<ul>
+<li>Properly prepare your iOS app to make a remote http api call when requested by the WatchKit app</li>
+<li>Properly handle errors on both the iOS app and WatchKit sides of the call</li>
+</ul>
 
 <h3>
 <a id="what-this-example-includes" class="anchor" href="#what-this-example-includes" aria-hidden="true"><span class="octicon octicon-link"></span></a>What this example includes</h3>
 
-<p>This example covers the following use-cases </p>
+<p>This example covers the following use-cases</p>
 
 <ul>
 <li>Glance interface requesting remote data from iOS parent</li>
 <li>Watch app requesting remote data from iOS parent </li>
-<li>AppDelegate handleWatchKitExtensionRequest properly orchestrating a remote http api call</li>
+<li>AppDelegate handleWatchKitExtensionRequest properly orchestrating a remote http api calls</li>
 </ul>
 
 <p>I've additionally thrown in some XCTTests' for the code in the project.</p>
 
 <h3>
+<a id="alamofire" class="anchor" href="#alamofire" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alamofire</h3>
+
+<p>To simplify what this codebase must do, I've leveraged Alamofire for making the necessary HTTP calls to a remove service.</p>
+
+<h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>At the moment, it's just me Anthony Broad-Crawford however, if you want to contribute feel free to do so. </p>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
