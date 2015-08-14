@@ -10,8 +10,11 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchkit_api_call_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="1" height="46.5" alignment="center" text="Label" textAlignment="center" id="N2I-Hs-JNg"/>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Button" id="vG3-DF-LTx">
+                        <label width="1" height="46.5" alignment="center" verticalAlignment="center" textAlignment="center" id="N2I-Hs-JNg"/>
+                        <imageView alignment="center" id="H8d-fC-zDt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Get Forecast" id="vG3-DF-LTx">
                             <color key="backgroundColor" red="0.098039215690000001" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="retrieveRemoteData" destination="AgC-eL-Hgc" id="j4S-lP-Qqi"/>
@@ -20,6 +23,7 @@
                     </items>
                     <connections>
                         <outlet property="button" destination="vG3-DF-LTx" id="mt1-KB-GH2"/>
+                        <outlet property="image" destination="H8d-fC-zDt" id="wDW-sb-BWf"/>
                         <outlet property="label" destination="N2I-Hs-JNg" id="cdF-1U-hfq"/>
                     </connections>
                 </controller>

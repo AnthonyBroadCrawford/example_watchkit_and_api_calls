@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>79DB905B-F0B9-4001-B313-B3CC0B33DCE6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>watchkit_api_call</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B452AA146AF7094BC9CDDDAAB06F39C273B7E3D6</key>
+		<string>github.com:AnthonyBroadCrawford/example_watchkit_and_api_calls.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>watchkit_api_call.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B452AA146AF7094BC9CDDDAAB06F39C273B7E3D6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:AnthonyBroadCrawford/example_watchkit_and_api_calls.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B452AA146AF7094BC9CDDDAAB06F39C273B7E3D6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B452AA146AF7094BC9CDDDAAB06F39C273B7E3D6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>example_watchkit_and_api_calls</string>
+		</dict>
+	</array>
+</dict>
+</plist>

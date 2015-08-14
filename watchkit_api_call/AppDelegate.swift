@@ -18,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
         let backgroundProcessingToken = application.beginBackgroundTaskWithName("backgroundApiCall", expirationHandler: { () -> Void in
-            reply(["response":"SOME_ERROR_CODE"])
+            reply(["response":"SOME_ERROR_CODE_INDICATING_TIMEOUT"])
         })
         
-        request(.GET, "http://www.google.com").responseString(encoding: nil) { (request, response, content, error) -> Void in
-            
-            reply(["response":"hello world :)"])
+        request(.GET, "https://api.forecast.io/forecast/fed39bad3a28923641421a6d602e75fb/37.8267,-122.423").responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler:{request, response, data, error in
+            reply(["response":(data as! NSDictionary)])
             application.endBackgroundTask(backgroundProcessingToken)
-        }
+        })
     }
 }
