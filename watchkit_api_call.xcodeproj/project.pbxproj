@@ -210,8 +210,7 @@
 		921591221B7D93CF00B850EE /* watchkit_api_call WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				921591251B7D93CF00B850EE /* InterfaceController.swift */,
-				921591271B7D93CF00B850EE /* GlanceController.swift */,
+				9282F2371B7F85FB00BDF3BC /* InterfaceControllers */,
 				921591291B7D93CF00B850EE /* Images.xcassets */,
 				921591231B7D93CF00B850EE /* Supporting Files */,
 			);
@@ -242,6 +241,15 @@
 				921591331B7D93CF00B850EE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9282F2371B7F85FB00BDF3BC /* InterfaceControllers */ = {
+			isa = PBXGroup;
+			children = (
+				921591251B7D93CF00B850EE /* InterfaceController.swift */,
+				921591271B7D93CF00B850EE /* GlanceController.swift */,
+			);
+			name = InterfaceControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,6 +703,7 @@
 				921591031B7D92D300B850EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		921591041B7D92D300B850EE /* Build configuration list for PBXNativeTarget "watchkit_api_callTests" */ = {
 			isa = XCConfigurationList;
@@ -703,6 +712,7 @@
 				921591061B7D92D300B850EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9215913C1B7D93CF00B850EE /* Build configuration list for PBXNativeTarget "watchkit_api_call WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -711,6 +721,7 @@
 				9215913E1B7D93CF00B850EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9215913F1B7D93CF00B850EE /* Build configuration list for PBXNativeTarget "watchkit_api_call WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -719,6 +730,7 @@
 				921591411B7D93CF00B850EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

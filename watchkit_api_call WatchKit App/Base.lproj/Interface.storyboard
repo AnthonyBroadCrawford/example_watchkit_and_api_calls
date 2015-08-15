@@ -17,38 +17,43 @@
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Get Forecast" id="vG3-DF-LTx">
                             <color key="backgroundColor" red="0.098039215690000001" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="retrieveRemoteData" destination="AgC-eL-Hgc" id="j4S-lP-Qqi"/>
+                                <action selector="retrieveRemoteForecastData" destination="AgC-eL-Hgc" id="TlZ-X5-FnH"/>
                             </connections>
                         </button>
                     </items>
                     <connections>
-                        <outlet property="button" destination="vG3-DF-LTx" id="mt1-KB-GH2"/>
-                        <outlet property="image" destination="H8d-fC-zDt" id="wDW-sb-BWf"/>
-                        <outlet property="label" destination="N2I-Hs-JNg" id="cdF-1U-hfq"/>
+                        <outlet property="forecast" destination="vG3-DF-LTx" id="khx-1E-MlK"/>
+                        <outlet property="forecastLabel" destination="N2I-Hs-JNg" id="wlp-b0-enT"/>
+                        <outlet property="forecastMoodImage" destination="H8d-fC-zDt" id="NhO-zY-Q9V"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-377" y="206"/>
+            <point key="canvasLocation" x="-666" y="313"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="rjY-Ar-IMT">
             <objects>
                 <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="watchkit_api_call_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="gv7-I2-MZq"/>
+                        <group alignment="left" id="gv7-I2-MZq">
+                            <items>
+                                <label width="1" height="1" alignment="left" textAlignment="center" id="BXb-sM-qEI"/>
+                            </items>
+                        </group>
                         <group alignment="left" id="eew-Gs-W6Y">
                             <items>
-                                <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="r78-Xu-nbT"/>
+                                <imageView alignment="center" verticalAlignment="center" id="KEM-Jh-zvi"/>
                             </items>
                         </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
-                        <outlet property="label" destination="r78-Xu-nbT" id="WTk-Ig-7gq"/>
+                        <outlet property="forecastLabel" destination="BXb-sM-qEI" id="dTt-BL-jqX"/>
+                        <outlet property="forecastMoodImage" destination="KEM-Jh-zvi" id="uKH-3z-T1j"/>
                     </connections>
                 </glanceController>
             </objects>
-            <point key="canvasLocation" x="-377" y="503"/>
+            <point key="canvasLocation" x="-666" y="610"/>
         </scene>
     </scenes>
 </document>
