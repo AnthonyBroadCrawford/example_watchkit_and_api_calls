@@ -29,39 +29,78 @@
       </header>
       <section>
         <h3>
-<a id="why-i-created-this-example" class="anchor" href="#why-i-created-this-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why I created this example</h3>
+<a id="why-i-created-this" class="anchor" href="#why-i-created-this" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why I created this</h3>
 
-<p>I recently had to build a WatchKit app that connected to the parent app to retrieve data.  This should be a very simple and well documented scenario via Apple given that almost 100% of WatchKit apps will do this.  Unfortunately, what I found out, is that is indeed not the case.  </p>
+<p>I recently had to build a WatchKit app that connected to its parent app to retrieve remote data from an API. This should be a very simple and well documented use-case from Apple given almost 100% of WatchKit apps will do this. Unfortunately, what I found out, is that clear and concise documentation is lacking and there are a few pitfalls. </p>
 
-<p>Now having built a <em>few</em> apps that do this, I felt it would be nice to document a working solution (Xcode 6.4 &amp; iOS 8.4) that shows how to </p>
+<p>So no one else would have to waste a day or so researching exactly what you need to do in order to make an API call from within your AppDelegates handleWatchKitExtensionRequest, I felt it would be nice to document a working solution (Xcode 6.4 &amp; iOS 8.4).</p>
+
+<h3>
+<a id="the-dreaded-error-domaincomapplewatchkiterrors-code2" class="anchor" href="#the-dreaded-error-domaincomapplewatchkiterrors-code2" aria-hidden="true"><span class="octicon octicon-link"></span></a>The dreaded Error Domain=com.apple.watchkit.errors Code=2</h3>
+
+<p>When I first created my first WatchKit app I followed the instructions provided by Apple to the letter.  However, when I first started to fire up my WatchKit App I was receiving the infamous <em>Error Domain=com.apple.watchkit.errors Code=2</em> when the WatchKit app was calling into it's corresponding iOS app.</p>
+
+<p>It didn't make any sense.  I </p>
 
 <ul>
-<li>Properly prepare your iOS app to make a remote http api call when requested by the WatchKit app</li>
-<li>Properly handle errors on both the iOS app and WatchKit sides of the call</li>
+<li>Implemented <a href="http://apple.co/1hdBKYu">WKInterfaceController.openParentApplication</a> function call in the Glance controller</li>
+<li>Implemented the <a href="http://apple.co/1LbSHw3">handleWatchKitExtensionRequest</a> function in the iOS AppDelegate</li>
+<li>Invoked the <code>reply</code> closure to return back to the WatchKit app</li>
+<li>Ensured I only returned the supported datatypes in my response </li>
+</ul>
+
+<p>Yet I was still receiving the damned Error Domain=com.apple.watchkit.errors Code=2.  It was maddening.  </p>
+
+<h3>
+<a id="the-superset-of-things-i-did-to-make-the-api-calls-successful" class="anchor" href="#the-superset-of-things-i-did-to-make-the-api-calls-successful" aria-hidden="true"><span class="octicon octicon-link"></span></a>The superset of things I did to make the API calls successful</h3>
+
+<p>Ultimately, it was rather simple, and I got bit by "one" tiny thing (which is usually the case) but I thought it would be nice to document them and then provide a working example.</p>
+
+<ul>
+<li><p>Call your iOS app from within WatchKit using <a href="http://apple.co/1hdBKYu">WKInterfaceController.openParentApplication</a></p></li>
+<li><p>Handle requests from your WatchKit app in your iOS AppDelegate with <a href="http://apple.co/1LbSHw3">handleWatchKitExtensionRequest</a></p></li>
+<li><p>Ensure in all scenarios you invoke the <code>reply</code> closure even if you are returning <code>nil</code></p></li>
+<li><p>Ensure your iOS app can run in the background by making sure "Application does not run in background" is set to NO (who the hell uses a double negative??)</p></li>
+<li><p>The first thing you do in your AppDelegates handleWatchKitExtensionRequest is register for background processing via <code>application.beginBackgroundTaskWithName</code></p></li>
+<li><p>The last thing you do in your AppDelegate's handleWatchKitExtensionRequest is terminate your background process application.endBackgroundTask</p></li>
 </ul>
 
 <h3>
-<a id="what-this-example-includes" class="anchor" href="#what-this-example-includes" aria-hidden="true"><span class="octicon octicon-link"></span></a>What this example includes</h3>
+<a id="this-solution-covers" class="anchor" href="#this-solution-covers" aria-hidden="true"><span class="octicon octicon-link"></span></a>This solution covers</h3>
 
-<p>This example covers the following use-cases</p>
+<p>The Watchkit app covers</p>
+
+<ul>
+<li>Properly preparing your iOS app to make a remote http api call when requested to do so via the WatchKit app</li>
+<li>Properly communicate errors and data to the WatchKit app</li>
+</ul>
+
+<h3>
+<a id="this-solution-doesnt-cover" class="anchor" href="#this-solution-doesnt-cover" aria-hidden="true"><span class="octicon octicon-link"></span></a>This solution doesn't cover</h3>
+
+<p>Thread safety and multiple concurrent requests from the WatchKit app to the iOS parent via handleWatchKitExtensionRequest</p>
+
+<h3>
+<a id="the-use-case" class="anchor" href="#the-use-case" aria-hidden="true"><span class="octicon octicon-link"></span></a>The use-case</h3>
+
+<p>I wanted a real, yet simple, use-case when building out this app. I chose to have the WatchKit app simply request the current weather forecaes from the <a href="https://developer.forecast.io/docs/forecast">DarkSky API</a> via <a href="www.forecast.io">Forecast.io</a></p>
+
+<p>The Watchkit app simply has a</p>
 
 <ul>
 <li>Glance interface requesting remote data from iOS parent</li>
-<li>Watch app requesting remote data from iOS parent </li>
-<li>AppDelegate handleWatchKitExtensionRequest properly orchestrating a remote http api calls</li>
+<li>Watch app requesting remote data from iOS parent</li>
 </ul>
-
-<p>I've additionally thrown in some XCTTests' for the code in the project.</p>
 
 <h3>
 <a id="alamofire" class="anchor" href="#alamofire" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alamofire</h3>
 
-<p>To simplify what this codebase must do, I've leveraged Alamofire for making the necessary HTTP calls to a remove service.</p>
+<p>To simplify what this codebase must do, I've leveraged Alamofire to make any necessary HTTP calls</p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>At the moment, it's just me Anthony Broad-Crawford however, if you want to contribute feel free to do so. </p>
+<p>At the moment, it's just me Anthony Broad-Crawford however, if you want to contribute, feel free to do so.</p>
 
 <h3>
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
@@ -74,6 +113,16 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-21851573-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
